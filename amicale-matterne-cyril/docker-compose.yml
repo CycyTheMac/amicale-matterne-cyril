@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+    amicalemc-db-data:
+        image: mysql:8.0.20
+        container_name: amicalemc-db-data
+        environment:
+            MYSQL_DATABASE: association
+            MYSQL_ROOT_PASSWORD: jesuismysql1
+            MYSQL_USER: cyril
+            MYSQL_PASSWORD: cyril
+        volumes:
+            - "amicalemc-db-data:/var/lib/mysql"
+        ports:
+            - "3308:3306"
+    
+    amicalemc-web:
+        build: amicalemc
+        container_name: amicalemc-web
+        environment: 
+            # - WEB_DOCUMENT_ROOT=/application/public_html
+            - PHP_DATE_TIMEZONE=Europe/Brussels
+        volumes: 
+            - ~/.composer-docker/cache:/root/.composer/cache:delegated
+            - ./amicalemc:/app
+        ports:
+            - "8080:80"
+
+volumes:
+    amicalemc-db-data:
