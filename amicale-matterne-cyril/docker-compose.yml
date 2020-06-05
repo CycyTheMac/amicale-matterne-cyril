@@ -1,6 +1,7 @@
 version: '3.8'
 services:
     amicalemc-db:
+        # mysql5 car la version 8 ne fonctionne pas avec yii2
         image: mysql:5
         container_name: amicalemc-db
         environment:
@@ -14,14 +15,11 @@ services:
             - "3308:3306"
     
     amicalemc-web:
-        #build: amicalemc
         image: yiisoftware/yii2-php:7.2-apache
         container_name: amicalemc-web
         environment: 
-            # - WEB_DOCUMENT_ROOT=/application/public_html
             - PHP_DATE_TIMEZONE=Europe/Brussels
         volumes: 
-            #- ~/.composer-docker/cache:/root/.composer/cache:delegated
             - composer-docker-cache:/root/.composer/cache
             - ./amicalemc:/app
         ports:

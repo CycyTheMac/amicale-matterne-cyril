@@ -114,7 +114,21 @@ class SiteController extends Controller
         return $this->render('contact', [
             'model' => $model,
         ]);
-    }
+    }   
+    
+    /**
+    * Displays country page.
+    *
+    * @return Response|string
+    */
+   public function actionCountry()
+   {
+       $model = new CountryForm();
+       
+       return $this->render('country', [
+           'model' => $model,
+       ]);
+   }
 
     /**
      * Displays about page.
