@@ -121,11 +121,25 @@ class SiteController extends Controller
     *
     * @return Response|string
     */
-   public function actionCountry()
+    public function actionCountry()
+    {
+        $model = new CountryForm();
+        
+        return $this->render('country', [
+            'model' => $model,
+        ]);
+    } 
+    
+    /**
+    * Displays city page.
+    *
+    * @return Response|string
+    */
+   public function actionCity()
    {
-       $model = new CountryForm();
+       $model = new CityForm();
        
-       return $this->render('country', [
+       return $this->render('city', [
            'model' => $model,
        ]);
    }

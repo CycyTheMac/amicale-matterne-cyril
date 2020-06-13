@@ -4,18 +4,18 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\CountrySearch */
+/* @var $searchModel app\models\CitySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Pays';
+$this->title = 'Villes';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="country-index">
+<div class="city-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Country', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create City', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -27,8 +27,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             // 'id',
+            'zip',
             'name',
-            'alpha2',
+            // 'is_subcity',
+            'countryName',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
