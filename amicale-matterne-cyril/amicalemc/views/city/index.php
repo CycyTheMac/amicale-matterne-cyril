@@ -1,22 +1,22 @@
 <?php
 
+use kartik\grid\GridView;
 use yii\helpers\Html;
-use yii\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\CitySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Villes';
+$this->title = Yii::t('app', 'Cities');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="city-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Create City', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <!-- <p>
+        <?= Html::a(Yii::t('app', 'Create City'), ['create'], ['class' => 'btn btn-success']) ?>
+    </p> -->
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -24,15 +24,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            ['class' => 'kartik\grid\SerialColumn'],
 
-            // 'id',
             'zip',
             'name',
-            // 'is_subcity',
             'countryName',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'kartik\grid\ActionColumn','template'=>'{update} {delete}'],
         ],
     ]); ?>
 

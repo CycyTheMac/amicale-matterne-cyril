@@ -41,9 +41,9 @@ class Country extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'name' => 'Name',
-            'alpha2' => 'Alpha2',
+            'id' => Yii::t('app', 'ID'),
+            'name' => Yii::t('app', 'Name'),
+            'alpha2' => Yii::t('app', 'Alpha2'),
         ];
     }
 

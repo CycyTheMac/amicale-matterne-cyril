@@ -5,8 +5,10 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
+    'name' => 'Amicale Cyril Matterne',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'language' => 'fr',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -14,7 +16,7 @@ $config = [
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'keyToBeSecret',
+            'cookieValidationKey' => 'KDm8sxaaJDLLfHWl1A-sJv9s70eavRk3',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -50,17 +52,24 @@ $config = [
             'rules' => [
             ],
         ],
-        
     ],
     'modules' => [
         'gridview' =>  [
-             'class' => '\kartik\grid\Module'
+             'class' => '\kartik\grid\Module',
              // enter optional module parameters below - only if you need to  
              // use your own export download action or custom translation 
              // message source
              // 'downloadAction' => 'gridview/export/download',
-             // 'i18n' => []
-         ]
+             'i18n' => [
+                'class' => 'yii\i18n\PhpMessageSource',
+                'basePath' => '@kvgrid/messages',
+                'forceTranslation' => true,
+             ]
+        ],
+        'gridviewKrajee' =>  [
+            'class' => '\kartik\grid\Module',
+            // your other grid module settings
+        ]
     ],
     'params' => $params,
 ];

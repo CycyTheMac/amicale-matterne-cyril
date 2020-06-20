@@ -3211,3 +3211,8 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+INSERT INTO person (`id`, `lastname`, `firstname`, `birthdate`, `tel`, `email`, `street`, `iban`, `cityid`) VALUES
+(1, 'Matterne', 'Cyril', '19940530', '0492057877', 'cyrilmatterne@yahoo.fr', 'rue du Petit-Bois 32', 'BE58001579614179', '2073'),
+(2, 'Fourneau', 'Françoise', '19600530', '0492057877', 'cyrilmatterne@yahoo.fr', 'rue du Petit-Bois 32', 'BE58001579614179', '2073'),
+(3, 'Matterne', 'Philippe', '19500530', '0492057877', 'cyrilmatterne@yahoo.fr', 'rue du Petit-Bois 32', 'BE58001579614179', '2073');

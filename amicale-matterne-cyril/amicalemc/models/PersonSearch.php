@@ -4,22 +4,22 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\City;
+use app\models\Person;
 
 /**
- * CitySearch represents the model behind the search form of `app\models\City`.
+ * PersonSearch represents the model behind the search form of `app\models\Person`.
  */
-class CitySearch extends City
+class PersonSearch extends Person
 {
-    public $countryName;
+    public $cityName;
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['id', 'is_subcity', 'countryid'], 'integer'],
-            [['zip', 'name', 'countryName'], 'safe'],
+            [['id', 'cityid'], 'integer'],
+            [['lastname', 'firstname', 'birthdate', 'tel', 'email', 'street', 'iban', 'cityName'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class CitySearch extends City
      */
     public function search($params)
     {
-        $query = City::find();
+        $query = Person::find();
 
         // add conditions that should always apply here
 
@@ -51,32 +51,37 @@ class CitySearch extends City
 
         $dataProvider->setSort([
             'attributes' => [
-                'zip',
-                'name',
-                'countryName' => [
-                    'asc' => ['country.name' => SORT_ASC],
-                    'desc' => ['country.name' => SORT_DESC]
+                'lastname',
+                'firstname',
+                'birthdate',
+                'cityName' => [
+                    'asc' => ['city.name' => SORT_ASC],
+                    'desc' => ['city.name' => SORT_DESC]
                 ]
             ]
         ]);
-       
 
         $this->load($params);
 
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
             // $query->where('0=1');
-            $query->joinWith(['country']);
+            $query->joinWith(['city']);
             return $dataProvider;
         }
 
+        // grid filtering conditions
+        $query->andFilterWhere([
+            'birthdate' => $this->birthdate,
+        ]);
+
         // filter by city name
-        $query->joinWith(['country' => function ($q){
-            $q->where('country.name LIKE "%' . $this->countryName . '%"');
+        $query->joinWith(['city' => function ($q){
+            $q->where('city.name LIKE "%' . $this->cityName . '%"');
         }]);
 
-        $query->andFilterWhere(['like', 'zip', $this->zip])
-            ->andFilterWhere(['like', 'name', $this->name]);
+        $query->andFilterWhere(['like', 'lastname', $this->lastname])
+            ->andFilterWhere(['like', 'firstname', $this->firstname]);
 
         return $dataProvider;
     }

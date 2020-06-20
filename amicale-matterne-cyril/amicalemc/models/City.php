@@ -19,7 +19,6 @@ use Yii;
  */
 class City extends \yii\db\ActiveRecord
 {
-
     /**
      * {@inheritdoc}
      */
@@ -48,12 +47,12 @@ class City extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'zip' => 'Zip',
-            'name' => 'Name',
-            'is_subcity' => 'Is Subcity',
-            'countryid' => 'Countryid',
-            'countryName' => 'Country Name'
+            'id' => Yii::t('app', 'ID'),
+            'zip' => Yii::t('app', 'Zip'),
+            'name' => Yii::t('app', 'Name'),
+            'is_subcity' => Yii::t('app', 'Is Subcity'),
+            'countryid' => Yii::t('app', 'Countryid'),
+            'countryName' => Yii::t('app', 'Country'),
         ];
     }
 
@@ -77,8 +76,7 @@ class City extends \yii\db\ActiveRecord
         return $this->hasOne(Country::className(), ['id' => 'countryid']);
     }
 
-    public function getCountryName()
-    {
+    public function getCountryName(){
         return $this->country->name;
     }
 
