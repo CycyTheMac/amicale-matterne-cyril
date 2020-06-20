@@ -76,7 +76,7 @@ AppAsset::register($this);
     <div class="container">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-4 text-center">&copy; My Company <?= date('Y') ?></div>
+            <div class="col-sm-4 text-center">&copy;<?=Yii::t('app',' Cyril Matterne ')?><?= date('Y') ?></div>
             <div class="col-sm-4 text-center"></div>
             <div class="col-sm-4 text-center"><?= Yii::powered() ?></div>
         </div>

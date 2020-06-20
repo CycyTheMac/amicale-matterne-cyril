@@ -1,7 +1,8 @@
 <?php
 
+use kartik\grid\GridView;
 use yii\helpers\Html;
-use yii\grid\GridView;
+// use yii\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\RoleSearch */
@@ -24,12 +25,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            ['class' => 'kartik\grid\SerialColumn'],
 
-            'id',
             'name',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'kartik\grid\ActionColumn','template'=>'{update} {delete}'],
         ],
     ]); ?>
 

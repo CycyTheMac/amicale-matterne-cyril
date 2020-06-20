@@ -150,4 +150,5 @@ return [
     'Congratulations!' => 'Félicitation !',
     'You have successfully created your Yii-powered application.' => 'Vous avez créé avec succès votre application propulsée par Yii.',
     'My Yii Application' => 'Mon application Yii',
+    'Welcome to the brand new site of<br>The Friendship Club of Cyril Matterne' => 'Bienvenu sur le tout nouveau site de<br>L\'Amicale de Cyril Matterne',
 ];

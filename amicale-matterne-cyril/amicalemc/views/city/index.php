@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'countryName',
 
-            ['class' => 'kartik\grid\ActionColumn','template'=>'{update} {delete}'],
+            // ['class' => 'kartik\grid\ActionColumn','template'=>'{update} {delete}'],
         ],
     ]); ?>
 
