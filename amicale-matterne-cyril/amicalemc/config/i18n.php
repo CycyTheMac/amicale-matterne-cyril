@@ -40,6 +40,6 @@ return [
     'messageTable' => '{{%message}}',
     'catalog' => 'messages',
     'ignoreCategories' => [],
-    'phpFileHeader' => __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'layouts' . DIRECTORY_SEPARATOR . 'main.php',
+    'phpFileHeader' => '',
     'phpDocBlock' => null,
 ];

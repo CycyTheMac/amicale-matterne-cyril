@@ -59,8 +59,9 @@ class Person extends \yii\db\ActiveRecord
             'email' => Yii::t('app', 'Email'),
             'street' => Yii::t('app', 'Street'),
             'iban' => Yii::t('app', 'Iban'),
-            'cityid' => Yii::t('app', 'Cityid'),
+            'cityid' => Yii::t('app', 'City'),
             'cityName' => Yii::t('app', 'City'),
+            'zip' => Yii::t('app', 'Zip'),
         ];
     }
 
@@ -86,6 +87,10 @@ class Person extends \yii\db\ActiveRecord
 
     public function getCityName(){
         return $this->city->name;
+    }
+
+    public function getZip(){
+        return $this->city->zip;
     }
 
     public function ibanValidation($attribute, $params){

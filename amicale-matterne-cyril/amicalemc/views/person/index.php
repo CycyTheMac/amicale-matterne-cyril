@@ -2,6 +2,9 @@
 
 use kartik\grid\GridView;
 use yii\helpers\Html;
+use yii\helpers\Url;
+use kartik\export\ExportMenu;
+use kartik\mpdf\Pdf;
 // use yii\grid\GridView;
 
 /* @var $this yii\web\View */
@@ -20,23 +23,47 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <?= GridView::widget([
-        'moduleId' => 'gridviewKrajee', // change the module identifier to use the respective module's settings
+    
+    <?=GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'kartik\grid\SerialColumn'],
-
             'lastname',
             'firstname',
-            'birthdate',
-            'tel',
+            [
+                'attribute' => 'birthdate',
+                'hAlign' => 'center',
+            ],
+            [
+                'attribute' => 'tel',
+                'hAlign' => 'center',
+            ],
             'cityName',
-
             ['class' => 'kartik\grid\ActionColumn'],
         ],
-    ]); ?>
-
-
+        'panel' => [
+            'type' => GridView::TYPE_DEFAULT,
+        ],
+        // set a label for default menu
+        'export' => [
+            'label' => 'Export Page',
+            'target' => '_self',
+            'fontAwesome' => true,
+            'header' => '',
+        ],
+        'exportConfig' => [
+            'pdf' => true,
+            'html' => true,
+            'csv' => true,
+            'xls' => true,
+            'json' => true,
+        ],
+        'exportContainer' => [
+            'class' => 'btn-group mr-2'
+        ],
+        // your toolbar can include the additional full export menu
+        'toolbar' => [
+            '{export}',
+        ]
+    ]);?>
 </div>

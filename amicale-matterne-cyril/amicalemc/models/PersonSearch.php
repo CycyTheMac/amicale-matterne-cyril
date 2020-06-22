@@ -12,6 +12,7 @@ use app\models\Person;
 class PersonSearch extends Person
 {
     public $cityName;
+    public $zip;
     /**
      * {@inheritdoc}
      */
@@ -19,7 +20,7 @@ class PersonSearch extends Person
     {
         return [
             [['id', 'cityid'], 'integer'],
-            [['lastname', 'firstname', 'birthdate', 'tel', 'email', 'street', 'iban', 'cityName'], 'safe'],
+            [['lastname', 'firstname', 'birthdate', 'tel', 'email', 'street', 'iban', 'cityName', 'zip'], 'safe'],
         ];
     }
 
@@ -57,7 +58,11 @@ class PersonSearch extends Person
                 'cityName' => [
                     'asc' => ['city.name' => SORT_ASC],
                     'desc' => ['city.name' => SORT_DESC]
-                ]
+                ],
+                'zip' => [
+                    'asc' => ['city.zip' => SORT_ASC],
+                    'desc' => ['city.zip' => SORT_DESC]
+                ],
             ]
         ]);
 
@@ -78,6 +83,9 @@ class PersonSearch extends Person
         // filter by city name
         $query->joinWith(['city' => function ($q){
             $q->where('city.name LIKE "%' . $this->cityName . '%"');
+        }]);        
+        $query->joinWith(['city' => function ($q){
+            $q->where('city.zip LIKE "%' . $this->zip . '%"');
         }]);
 
         $query->andFilterWhere(['like', 'lastname', $this->lastname])

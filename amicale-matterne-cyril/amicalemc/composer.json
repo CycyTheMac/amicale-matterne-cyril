@@ -21,7 +21,9 @@
         "rmrevin/yii2-fontawesome": "~3.5-dev",
         "kartik-v/yii2-grid": "dev-master",
         "globalcitizen/php-iban": "2.8.0",
-        "kartik-v/yii2-widget-datepicker": "dev-master"
+        "kartik-v/yii2-widget-datepicker": "dev-master",
+        "kartik-v/yii2-export": "dev-master",
+        "kartik-v/yii2-mpdf": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
