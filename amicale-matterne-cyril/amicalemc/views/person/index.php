@@ -24,7 +24,42 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
     
-    <?=GridView::widget([
+    <?=
+    ExportMenu::widget([
+        'dataProvider' => $dataProvider,
+        'columns' => [
+            'lastname',
+            'firstname',
+            [
+                'attribute' => 'birthdate',
+                'hAlign' => 'center',
+            ],
+            'email',
+            [
+                'attribute' => 'tel',
+                'hAlign' => 'center',
+            ],
+            'street',
+            'cityName',
+            'zip',
+            'iban',
+        ],
+        'target' => '_self',
+        'exportConfig' => [
+            'Txt' => false,
+            'Xls' => false,
+        ],
+        'exportContainer' => [
+            'class' => 'btn-group mr-2'
+        ],
+        'dropdownOptions' => [
+            'label' => 'Export all',
+            'class' => 'btn btn-outline-secondary',
+        ],
+        'showConfirmAlert' => false,
+    ]);
+
+    echo GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
             ['class' => 'kartik\grid\SerialColumn'],
